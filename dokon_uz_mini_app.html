@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>DO‘KON || UZ</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#050814;--card:#0d1424;--card2:#111a2d;--text:#fff;--muted:#8e9ab0;--line:#1c2740;--accent:#635bff;--accent2:#8b5cf6;--green:#22c55e}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}body{min-height:100vh}
+button,input,select{font:inherit}button{border:0;color:inherit;cursor:pointer}
+.app{max-width:760px;margin:auto;padding-bottom:88px}
+.top{padding:18px 16px 10px;position:sticky;top:0;z-index:20;background:rgba(5,8,20,.92);backdrop-filter:blur(18px)}
+.brand{display:flex;align-items:center;justify-content:space-between}.brandLeft{display:flex;gap:10px;align-items:center}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#635bff,#8b5cf6);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 25px #635bff44}
+.title{font-size:18px;font-weight:800}.sub{font-size:11px;color:var(--muted);margin-top:3px}
+.iconBtn{width:40px;height:40px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.search{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 15px;display:flex;gap:9px}
+.search input{width:100%;background:none;border:0;outline:0;color:#fff}.search input::placeholder{color:#71809a}
+.page{display:none;padding:14px 16px}.page.active{display:block}
+.hero{min-height:185px;border-radius:22px;padding:22px;background:linear-gradient(120deg,#121b36,#17113a);border:1px solid #29365b;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-70px;top:-70px;background:linear-gradient(135deg,#635bff,#8b5cf6);opacity:.32;filter:blur(5px)}
+.hero h1{font-size:25px;max-width:250px;margin:0 0 8px}.hero p{color:#aab4c8;max-width:260px;font-size:13px}.primary{background:linear-gradient(135deg,#635bff,#7c4dff);padding:12px 17px;border-radius:12px;font-weight:800;box-shadow:0 8px 25px #635bff33}
+.chips{display:flex;gap:8px;overflow:auto;padding:14px 0}.chip{white-space:nowrap;background:var(--card);border:1px solid var(--line);padding:10px 13px;border-radius:12px;color:#aab4c8}.chip.active{background:#635bff;color:#fff;border-color:#635bff}
+h2{font-size:19px;margin:12px 0}.row{display:flex;align-items:center;justify-content:space-between}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.product{background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden}.pic{height:185px;background:#10192b;position:relative}.pic img{width:100%;height:100%;object-fit:cover}.tag{position:absolute;left:9px;top:9px;background:#111a2ddd;border:1px solid #ffffff1a;padding:5px 8px;border-radius:8px;font-size:10px}.heart{position:absolute;right:9px;top:9px;width:34px;height:34px;border-radius:10px;background:#0b1120cc}.pinfo{padding:11px}.pname{font-size:14px;font-weight:750}.price{font-size:16px;font-weight:850;margin:6px 0}.muted{font-size:11px;color:var(--muted)}.add{width:100%;padding:10px;border-radius:11px;background:#171f33;border:1px solid #283451;font-weight:750;margin-top:8px}.add:hover{background:#635bff}
+.listCard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:10px}.cartItem{display:flex;gap:11px}.thumb{width:72px;height:82px;border-radius:12px;object-fit:cover;background:#111a2d}.grow{flex:1}.qty{display:flex;align-items:center;gap:7px;margin-top:8px}.qty button{width:30px;height:30px;border-radius:9px;background:#19233a}.qty b{min-width:22px;text-align:center}.total{display:flex;justify-content:space-between;background:var(--card2);border:1px solid var(--line);border-radius:15px;padding:15px;margin:12px 0;font-weight:850}.form label{display:block;color:#9aa7bd;font-size:12px;margin:12px 0 6px}.form input,.form textarea,.form select{width:100%;background:var(--card);border:1px solid var(--line);color:#fff;border-radius:12px;padding:13px;outline:0}.form textarea{min-height:90px;resize:vertical}.full{width:100%;padding:14px;border-radius:13px;margin-top:10px}.secondary{background:#151e32;border:1px solid var(--line)}.danger{background:#2a1620;color:#ff8ca4}.profile{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);padding:16px;border-radius:18px}.avatar{width:55px;height:55px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#635bff,#8b5cf6);font-weight:900;font-size:20px}.menuItem{display:flex;align-items:center;gap:12px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:14px;margin-top:9px}.menuItem span:nth-child(2){flex:1}.switch{width:45px;height:25px;border-radius:20px;background:#26324a;padding:3px}.switch i{display:block;width:19px;height:19px;background:#fff;border-radius:50%;transition:.2s}.switch.on{background:#635bff}.switch.on i{transform:translateX(20px)}
+.bottom{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(760px,100%);background:rgba(8,13,26,.96);backdrop-filter:blur(18px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 8px max(8px,env(safe-area-inset-bottom));z-index:50}.nav{background:none;color:#738097;font-size:10px;padding:5px 2px}.nav b{display:block;font-size:19px;margin-bottom:3px}.nav.active{color:#fff}.badge{display:inline-grid;place-items:center;min-width:17px;height:17px;padding:0 4px;border-radius:10px;background:#635bff;color:#fff;font-size:9px;margin-left:-7px;vertical-align:top}
+.modal{position:fixed;inset:0;background:#0009;z-index:100;display:none;align-items:flex-end}.modal.show{display:flex}.sheet{width:100%;max-width:760px;margin:auto;background:#0a1020;border:1px solid var(--line);border-radius:24px 24px 0 0;max-height:92vh;overflow:auto;padding:16px}.close{float:right;background:#182238;width:36px;height:36px;border-radius:10px}.detailImg{width:100%;height:330px;object-fit:cover;border-radius:18px}.sizes{display:flex;gap:8px;flex-wrap:wrap}.size{background:#131e34;border:1px solid var(--line);padding:10px 14px;border-radius:10px}.size.selected{background:#635bff;border-color:#635bff}
+.empty{text-align:center;color:#7e8aa0;padding:55px 15px}.toast{position:fixed;left:50%;bottom:95px;transform:translateX(-50%) translateY(20px);background:#fff;color:#111;padding:12px 16px;border-radius:12px;font-weight:750;opacity:0;pointer-events:none;transition:.25s;z-index:200}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:390px){.pic{height:160px}.hero{min-height:170px}.detailImg{height:280px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand">
+    <div class="brandLeft"><div class="logo">🛍️</div><div><div class="title">DO‘KON || UZ</div><div class="sub">Sifat • Uslub • Yangilik</div></div></div>
+    <button class="iconBtn" onclick="showPage('profile')">🔔</button>
+  </div>
+  <div class="search"><span>🔎</span><input id="search" placeholder="Kiyim qidirish..." oninput="searchProducts()"></div>
+</header>
+
+<section id="home" class="page active">
+  <div class="hero"><h1>Yangi kolleksiya</h1><p>Eng yaxshi modellar endi siz uchun.</p><button class="primary" onclick="showPage('catalog')">Ko‘rish →</button></div>
+  <div class="chips" id="cats"></div>
+  <div class="row"><h2>Mashhur mahsulotlar</h2><button class="chip" onclick="showPage('catalog')">Barchasi →</button></div>
+  <div id="homeGrid" class="grid"></div>
+</section>
+
+<section id="catalog" class="page">
+  <div class="row"><h2>Katalog</h2><span class="muted" id="resultCount"></span></div>
+  <div class="chips" id="cats2"></div>
+  <div id="catalogGrid" class="grid"></div>
+</section>
+
+<section id="cart" class="page">
+  <div class="row"><h2>🛒 Savat</h2><button class="iconBtn" onclick="clearCart()">🗑️</button></div>
+  <div id="cartList"></div>
+  <div id="cartBottom"></div>
+</section>
+
+<section id="orders" class="page">
+  <h2>📦 Buyurtmalarim</h2>
+  <div id="ordersList"></div>
+</section>
+
+<section id="profile" class="page">
+  <h2>👤 Profil</h2>
+  <div class="profile"><div class="avatar" id="avatar">U</div><div><b id="profileName">Telegram foydalanuvchi</b><div class="muted" id="profileUsername">Profil ma'lumotlari</div></div></div>
+  <div class="menuItem" onclick="showPage('orders')"><span>📦</span><span>Mening buyurtmalarim</span><b>›</b></div>
+  <div class="menuItem" onclick="showPage('checkout')"><span>📍</span><span>Manzil va buyurtma</span><b>›</b></div>
+  <div class="menuItem" onclick="toggleSetting('notify')"><span>🔔</span><span>Bildirishnomalar</span><div class="switch on" id="notify"><i></i></div></div>
+  <div class="menuItem" onclick="toggleSetting('theme')"><span>🌙</span><span>Kecha rejimi</span><div class="switch on" id="theme"><i></i></div></div>
+</section>
+
+<section id="checkout" class="page">
+  <div class="row"><h2>📦 Buyurtma berish</h2><button class="chip" onclick="showPage('cart')">← Savat</button></div>
+  <form class="form" onsubmit="submitOrder(event)">
+    <label>Ism-familiya</label><input id="fullname" required placeholder="Masalan: Sobirjon Akramjonov">
+    <label>Telefon raqam</label><input id="phone" required type="tel" placeholder="+998 90 123 45 67">
+    <label>Turar joy / manzil</label><textarea id="address" required placeholder="Viloyat, tuman, ko‘cha, uy..."></textarea>
+    <label>Yetkazib berish</label><select id="delivery"><option>Yetkazib berish</option><option>Olib ketish</option></select>
+    <label>Izoh</label><textarea id="note" placeholder="Rang, qo‘shimcha izoh..."></textarea>
+    <button class="primary full" type="submit">✅ Buyurtmani tasdiqlash</button>
+  </form>
+</section>
+</div>
+
+<nav class="bottom">
+<button class="nav active" data-page="home" onclick="showPage('home')"><b>⌂</b>Bosh sahifa</button>
+<button class="nav" data-page="cart" onclick="showPage('cart')"><b>🛒<span class="badge" id="cartBadge">0</span></b>Savat</button>
+<button class="nav" data-page="orders" onclick="showPage('orders')"><b>▣</b>Buyurtmalar</button>
+<button class="nav" data-page="profile" onclick="showPage('profile')"><b>♙</b>Profil</button>
+</nav>
+
+<div class="modal" id="productModal">
+ <div class="sheet" id="productSheet"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const tg=window.Telegram?.WebApp;
+if(tg){tg.ready();tg.expand();}
+
+const products=[
+{id:1,name:"Nike Futbolka",cat:"Futbolkalar",price:179000,img:"https://placehold.co/800x900/111827/ffffff?text=FUTBOLKA",sizes:["S","M","L","XL","XXL"],tag:"Yangi"},
+{id:2,name:"Oversize Hudi",cat:"Hudi",price:249000,img:"https://placehold.co/800x900/171717/ffffff?text=HUDI",sizes:["S","M","L","XL","XXL"],tag:"Top"},
+{id:3,name:"Cargo Shim",cat:"Shimlar",price:199000,img:"https://placehold.co/800x900/172033/ffffff?text=CARGO",sizes:["S","M","L","XL"],tag:""},
+{id:4,name:"Sportivka",cat:"Sport",price:299000,img:"https://placehold.co/800x900/101827/ffffff?text=SPORT",sizes:["M","L","XL","XXL"],tag:"Yangi"},
+{id:5,name:"Qishki Kurtka",cat:"Kurtkalar",price:399000,img:"https://placehold.co/800x900/0f172a/ffffff?text=KURTKA",sizes:["M","L","XL","XXL","3XL"],tag:""},
+{id:6,name:"Kepka",cat:"Aksessuar",price:99000,img:"https://placehold.co/800x900/111827/ffffff?text=KEPKA",sizes:["Universal"],tag:""}
+];
+
+let cart=JSON.parse(localStorage.getItem("dokon_cart")||"[]");
+let orders=JSON.parse(localStorage.getItem("dokon_orders")||"[]");
+let currentCat="Barchasi";
+
+const cats=["Barchasi","Futbolkalar","Hudi","Shimlar","Sport","Kurtkalar","Aksessuar"];
+
+function money(n){return Number(n).toLocaleString("uz-UZ")+" so‘m"}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)}
+function save(){localStorage.setItem("dokon_cart",JSON.stringify(cart));localStorage.setItem("dokon_orders",JSON.stringify(orders));updateBadge()}
+
+function catHTML(target){
+document.getElementById(target).innerHTML=cats.map(c=>`<button class="chip ${c===currentCat?"active":""}" onclick="setCat('${c}')">${c}</button>`).join("");
+}
+function setCat(c){currentCat=c;catHTML("cats");catHTML("cats2");renderAll()}
+function filtered(){
+let q=document.getElementById("search")?.value.toLowerCase()||"";
+return products.filter(p=>(currentCat==="Barchasi"||p.cat===currentCat)&&p.name.toLowerCase().includes(q))
+}
+function card(p){
+return `<article class="product">
+<div class="pic" onclick="openProduct(${p.id})"><img src="${p.img}" alt="${p.name}">${p.tag?`<span class="tag">${p.tag}</span>`:""}<button class="heart" onclick="event.stopPropagation();fav(${p.id})">♡</button></div>
+<div class="pinfo"><div class="pname">${p.name}</div><div class="price">${money(p.price)}</div><div class="muted">📏 ${p.sizes.join(" • ")}</div><button class="add" onclick="openProduct(${p.id})">Ko‘rish</button></div>
+</article>`
+}
+function renderAll(){
+const list=filtered();
+document.getElementById("homeGrid").innerHTML=products.slice(0,4).map(card).join("");
+document.getElementById("catalogGrid").innerHTML=list.length?list.map(card).join(""):`<div class="empty">Mahsulot topilmadi 😕</div>`;
+document.getElementById("resultCount").textContent=list.length+" ta";
+catHTML("cats");catHTML("cats2");renderCart();renderOrders();
+}
+function searchProducts(){renderAll()}
+
+let selectedSize=null;
+function openProduct(id){
+const p=products.find(x=>x.id===id);selectedSize=p.sizes[0];
+document.getElementById("productSheet").innerHTML=`<button class="close" onclick="closeProduct()">✕</button>
+<img class="detailImg" src="${p.img}">
+<h2>${p.name}</h2><div class="price">${money(p.price)}</div><p class="muted">Sifatli material • Zamonaviy dizayn • Yetkazib berish mavjud</p>
+<h3>Razmer</h3><div class="sizes">${p.sizes.map(s=>`<button class="size ${s===selectedSize?"selected":""}" onclick="chooseSize('${s}',${p.id})">${s}</button>`).join("")}</div>
+<button class="primary full" onclick="addToCart(${p.id},selectedSize)">🛒 Savatga qo‘shish</button>`;
+document.getElementById("productModal").classList.add("show");
+}
+function chooseSize(s,id){selectedSize=s;openProduct(id)}
+function closeProduct(){document.getElementById("productModal").classList.remove("show")}
+function addToCart(id,size){
+const p=products.find(x=>x.id===id);const key=id+"_"+size;const old=cart.find(x=>x.key===key);
+if(old)old.qty++;else cart.push({key,id,name:p.name,price:p.price,img:p.img,size,qty:1});
+save();closeProduct();toast("🛒 Savatga qo‘shildi");showPage("cart")
+}
+function changeQty(key,d){
+const x=cart.find(i=>i.key===key);if(!x)return;x.qty+=d;if(x.qty<=0)cart=cart.filter(i=>i.key!==key);save();renderCart()
+}
+function clearCart(){if(cart.length&&confirm("Savatni tozalaysizmi?")){cart=[];save();renderCart()}}
+function total(){return cart.reduce((a,x)=>a+x.price*x.qty,0)}
+function renderCart(){
+const box=document.getElementById("cartList"), bottom=document.getElementById("cartBottom");
+if(!cart.length){box.innerHTML=`<div class="empty">🛒<br><br>Savatingiz hozircha bo‘sh</div>`;bottom.innerHTML="";return}
+box.innerHTML=cart.map(x=>`<div class="listCard"><div class="cartItem"><img class="thumb" src="${x.img}"><div class="grow"><b>${x.name}</b><div class="muted">Razmer: ${x.size}</div><div class="price">${money(x.price)}</div><div class="qty"><button onclick="changeQty('${x.key}',-1)">−</button><b>${x.qty}</b><button onclick="changeQty('${x.key}',1)">+</button><span class="muted">${money(x.price*x.qty)}</span></div></div></div></div>`).join("");
+bottom.innerHTML=`<div class="total"><span>Jami:</span><span>${money(total())}</span></div><button class="primary full" onclick="showPage('checkout')">Buyurtma berish →</button>`;
+}
+function updateBadge(){const n=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("cartBadge").textContent=n}
+function showPage(id){
+document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");
+document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.page===id));
+if(id==="cart")renderCart();if(id==="orders")renderOrders();if(id==="profile")loadProfile();window.scrollTo(0,0)
+}
+function submitOrder(e){
+e.preventDefault();if(!cart.length){toast("Savat bo‘sh");showPage("cart");return}
+const order={id:"#DO"+Date.now().toString().slice(-6),date:new Date().toLocaleString("uz-UZ"),name:fullname.value,phone:phone.value,address:address.value,delivery:delivery.value,note:note.value,items:cart.map(x=>({...x})),total:total()};
+orders.unshift(order);save();
+const payload={type:"order",order};
+if(tg&&tg.sendData){
+try{tg.sendData(JSON.stringify(payload).slice(0,4090))}catch(e){}
+}
+cart=[];save();renderOrders();toast("✅ Buyurtma qabul qilindi");showPage("orders")
+}
+function renderOrders(){
+const box=document.getElementById("ordersList");
+if(!orders.length){box.innerHTML=`<div class="empty">📦<br><br>Hali buyurtmalar yo‘q</div>`;return}
+box.innerHTML=orders.map(o=>`<div class="listCard"><div class="row"><b>${o.id}</b><span class="muted">${o.date}</span></div><p class="muted">${o.items.map(i=>i.name+" × "+i.qty).join(", ")}</p><div class="row"><b>${money(o.total)}</b><span style="color:#22c55e">● Yangi</span></div></div>`).join("")
+}
+function loadProfile(){
+const u=tg?.initDataUnsafe?.user;if(u){document.getElementById("profileName").textContent=[u.first_name,u.last_name].filter(Boolean).join(" ");document.getElementById("profileUsername").textContent=u.username?"@"+u.username:"Telegram foydalanuvchi";document.getElementById("avatar").textContent=(u.first_name||"U")[0].toUpperCase()}
+}
+function toggleSetting(id){document.getElementById(id).classList.toggle("on");toast("Sozlama o‘zgartirildi")}
+function fav(id){toast("❤️ Sevimlilarga qo‘shildi")}
+document.getElementById("productModal").addEventListener("click",e=>{if(e.target.id==="productModal")closeProduct()});
+renderAll();updateBadge();loadProfile();
+</script>
+</body>
+</html>
